@@ -1,43 +1,82 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Szczedrzyk - informacje i historia</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Szczedrzyk – Oficjalna Strona Informacyjna</title>
+  <link rel="stylesheet" href="styl.css">
 </head>
 <body>
+
   <header>
-    <h1>Witaj w Szczedrzyku!</h1>
-    <p>Oficjalna nieoficjalna strona miejscowości Szczedrzyk – poznaj jej historię, ludzi i uroki natury.</p>
+    <h1>🌿 Szczedrzyk – serce gminy Ozimek</h1>
+    <nav>
+      <a href="#historia">Historia</a>
+      <a href="#ogloszenia">Ogłoszenia</a>
+      <a href="#komentarze">Komentarze</a>
+    </nav>
   </header>
 
   <main>
-    <section>
-      <h2>Historia Szczedrzyka</h2>
-      <p>Szczedrzyk to malownicza wieś położona nad Jeziorem Turawskim, w gminie Ozimek, województwo opolskie. 
-      Pierwsze wzmianki pochodzą z XIII wieku...</p>
+    <section id="historia">
+      <h2>Historia i charakterystyka Szczedrzyka</h2>
+      <p>
+        Szczedrzyk to malownicza miejscowość położona w gminie Ozimek, w województwie opolskim. 
+        Historia wsi sięga średniowiecza – pierwsze wzmianki o niej pochodzą z XIV wieku. 
+        Przez wieki Szczedrzyk był miejscem o dużym znaczeniu rolniczym i rzemieślniczym, 
+        a jego mieszkańcy od pokoleń dbają o lokalne tradycje i kulturę.
+      </p>
+      <p>
+        W miejscowości znajduje się kościół pw. św. Rocha, malownicze tereny spacerowe i liczne stawy, 
+        które przyciągają turystów oraz miłośników natury. Szczedrzyk słynie z gościnności i aktywności społecznej – 
+        działa tu wiele organizacji lokalnych, a mieszkańcy chętnie angażują się w wydarzenia kulturalne i sportowe.
+      </p>
     </section>
 
-    <section>
-      <h2>Atrakcje i ciekawe miejsca</h2>
-      <ul>
-        <li>Kościół św. Mikołaja z przełomu XIX i XX wieku</li>
-        <li>Szkoła Podstawowa im. Jana Pawła II</li>
-        <li>Bliskość Jeziora Turawskiego i lasów</li>
+    <section id="ogloszenia">
+      <h2>📢 Ogłoszenia</h2>
+      <ul id="lista-ogloszen">
+        <li><strong>15 października:</strong> Spotkanie sołeckie w świetlicy o 18:00.</li>
+        <li><strong>20 października:</strong> Jesienne sprzątanie wsi – zbiórka przy remizie o 9:00.</li>
+        <li><strong>25 października:</strong> Zabawa taneczna w Domu Kultury – zapisy u sołtysa.</li>
       </ul>
+
+      <div id="dodaj-ogloszenie">
+        <h3>Dodaj własne ogłoszenie</h3>
+        <p>(Twoje ogłoszenie nie zapisze się na stałe – działa lokalnie, tylko w tej przeglądarce)</p>
+        <input type="text" id="noweOgloszenie" placeholder="Wpisz treść ogłoszenia...">
+        <button onclick="dodajOgloszenie()">Dodaj</button>
+      </div>
     </section>
 
-    <section>
-      <h2>Galeria</h2>
-      <img src="images/szczedrzyk1.jpg" alt="Widok na Szczedrzyk">
-      <img src="images/szczedrzyk2.jpg" alt="Kościół św. Mikołaja">
+    <section id="komentarze">
+      <h2>💬 Komentarze</h2>
+      <p>Komentarze obsługuje system <strong>Utterances</strong> – zaloguj się na GitHub, by dodać komentarz.</p>
+      <script src="https://utteranc.es/client.js"
+        repo="Bedrox55/szczedrzyk"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+      </script>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Strona o Szczedrzyku | Stworzone przez Gustawa Ogórczaka</p>
+    <p>© 2025 Szczedrzyk. Strona informacyjna stworzona przez Gustawa Ogórczaka.</p>
   </footer>
+
+  <script>
+    function dodajOgloszenie() {
+      const tekst = document.getElementById("noweOgloszenie").value.trim();
+      if (tekst !== "") {
+        const li = document.createElement("li");
+        li.textContent = tekst;
+        document.getElementById("lista-ogloszen").appendChild(li);
+        document.getElementById("noweOgloszenie").value = "";
+      }
+    }
+  </script>
+
 </body>
 </html>
