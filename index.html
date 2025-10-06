@@ -33,21 +33,56 @@
       </p>
     </section>
 
-    <section id="ogloszenia">
-      <h2>📢 Ogłoszenia</h2>
-      <ul id="lista-ogloszen">
-        <li><strong>15 października:</strong> Spotkanie sołeckie w świetlicy o 18:00.</li>
-        <li><strong>20 października:</strong> Jesienne sprzątanie wsi – zbiórka przy remizie o 9:00.</li>
-        <li><strong>25 października:</strong> Zabawa taneczna w Domu Kultury – zapisy u sołtysa.</li>
-      </ul>
+   <section id="ogloszenia">
+  <h2>📢 Ogłoszenia</h2>
+  <ul id="lista-ogloszen"></ul>
 
-      <div id="dodaj-ogloszenie">
-        <h3>Dodaj własne ogłoszenie</h3>
-        <p>(Twoje ogłoszenie nie zapisze się na stałe – działa lokalnie, tylko w tej przeglądarce)</p>
-        <input type="text" id="noweOgloszenie" placeholder="Wpisz treść ogłoszenia...">
-        <button onclick="dodajOgloszenie()">Dodaj</button>
-      </div>
-    </section>
+  <div id="dodaj-ogloszenie">
+    <h3>Dodaj własne ogłoszenie</h3>
+    <p>Twoje ogłoszenia zapisują się lokalnie w przeglądarce, więc nie znikną po odświeżeniu strony.</p>
+    <input type="text" id="noweOgloszenie" placeholder="Wpisz treść ogłoszenia...">
+    <button onclick="dodajOgloszenie()">Dodaj</button>
+    <button class="usun" onclick="wyczyscOgloszenia()">🗑 Wyczyść wszystkie</button>
+  </div>
+</section>
+
+<script>
+  // 🔹 Ładowanie ogłoszeń przy uruchomieniu strony
+  document.addEventListener("DOMContentLoaded", () => {
+    const ogloszenia = JSON.parse(localStorage.getItem("ogloszeniaSzczedrzyk")) || [];
+    ogloszenia.forEach(tekst => {
+      const li = document.createElement("li");
+      li.textContent = tekst;
+      document.getElementById("lista-ogloszen").appendChild(li);
+    });
+  });
+
+  // 🔹 Dodawanie ogłoszenia
+  function dodajOgloszenie() {
+    const tekst = document.getElementById("noweOgloszenie").value.trim();
+    if (tekst !== "") {
+      const li = document.createElement("li");
+      li.textContent = tekst;
+      document.getElementById("lista-ogloszen").appendChild(li);
+      
+      // Zapis w przeglądarce
+      const ogloszenia = JSON.parse(localStorage.getItem("ogloszeniaSzczedrzyk")) || [];
+      ogloszenia.push(tekst);
+      localStorage.setItem("ogloszeniaSzczedrzyk", JSON.stringify(ogloszenia));
+      
+      document.getElementById("noweOgloszenie").value = "";
+    }
+  }
+
+  // 🔹 Czyszczenie ogłoszeń
+  function wyczyscOgloszenia() {
+    if (confirm("Czy na pewno chcesz usunąć wszystkie ogłoszenia?")) {
+      localStorage.removeItem("ogloszeniaSzczedrzyk");
+      document.getElementById("lista-ogloszen").innerHTML = "";
+    }
+  }
+</script>
+
 
     <section id="komentarze">
       <h2>💬 Komentarze</h2>
