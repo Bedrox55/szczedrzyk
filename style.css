@@ -91,3 +91,12 @@ footer {
   margin-top: 30px;
   font-size: 0.9rem;
 }
+
+.usun {
+  background-color: #b30000;
+  margin-left: 10px;
+}
+
+.usun:hover {
+  background-color: #800000;
+}
