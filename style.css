@@ -7,6 +7,21 @@ body {
   padding: 0;
   line-height: 1.6;
 }
+body {
+  background: url('https://i.imgur.com/Z1y0gBG.jpg') no-repeat center top fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  color: #222;
+}
+section {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
 
 /* ======== Nagłówek ======== */
 header {
@@ -198,4 +213,5 @@ footer {
   margin-top: 10px;
   border-radius: 6px;
 }
+
 
