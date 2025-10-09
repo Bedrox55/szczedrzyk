@@ -104,3 +104,98 @@ footer {
     width: 60%;
   }
 }
+/* ======== Pasek menu ======== */
+.menu {
+  background: #2e8b57;
+  padding: 10px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+/* ======== Galeria ======== */
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.galeria img {
+  width: 280px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+/* ======== Komentarze ======== */
+#komentarze {
+  background: #f8fff8;
+}
+
+#dodaj-komentarz {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#dodaj-komentarz input,
+#dodaj-komentarz textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+#dodaj-komentarz button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#dodaj-komentarz button:hover {
+  background: #388e3c;
+}
+
+.komentarz {
+  background: #eafbea;
+  border-left: 4px solid #4caf50;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
