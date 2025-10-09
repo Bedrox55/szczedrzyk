@@ -213,5 +213,136 @@ footer {
   margin-top: 10px;
   border-radius: 6px;
 }
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  color: #222;
+  background: linear-gradient(to bottom, #b9e6ff, #ffffff);
+  overflow-x: hidden;
+}
+
+/* 🌤️ Efekt chmur przesuwających się w tle */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 200%;
+  height: 100%;
+  background: url('https://i.imgur.com/Z1y0gBG.jpg') repeat-x;
+  background-size: cover;
+  animation: clouds 120s linear infinite;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+@keyframes clouds {
+  from { background-position-x: 0; }
+  to { background-position-x: -2000px; }
+}
+
+/* 📜 Układ i styl sekcji */
+header {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: bold;
+}
+
+nav button {
+  margin-left: 15px;
+  padding: 5px 10px;
+  border: none;
+  background: #0077cc;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🌙 Tryb nocny */
+body.noc {
+  background: linear-gradient(to bottom, #1a1a1a, #333);
+  color: #eee;
+}
+
+body.noc section {
+  background: rgba(40, 40, 40, 0.9);
+}
+
+body.noc nav a {
+  color: #66aaff;
+}
+
+/* 🗺️ Mapa */
+iframe {
+  border-radius: 15px;
+}
+
+/* 📢 Powiadomienia */
+#powiadomienie {
+  display: none;
+  background: #4caf50;
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* 📬 Formularz kontaktowy */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea, button {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #0077cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005fa3;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
 
 
