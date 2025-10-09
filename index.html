@@ -7,6 +7,14 @@
   <link rel="stylesheet" href="styl.css">
 </head>
 <body>
+<nav class="menu">
+  <ul>
+    <li><a href="#historia">Historia</a></li>
+    <li><a href="#ogloszenia">Ogłoszenia</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#komentarze">Komentarze</a></li>
+  </ul>
+</nav>
 
   <header>
     <h1>🌿 Szczedrzyk – serce gminy Ozimek</h1>
@@ -45,6 +53,41 @@
     <button class="usun" onclick="wyczyscOgloszenia()">🗑 Wyczyść wszystkie</button>
   </div>
 </section>
+<section id="galeria">
+  <h2>📸 Galeria Szczedrzyka</h2>
+  <div class="galeria">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Szczedrzyk_Church.jpg/640px-Szczedrzyk_Church.jpg" alt="Kościół w Szczedrzyku">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Szczedrzyk_stawy.jpg/640px-Szczedrzyk_stawy.jpg" alt="Stawy w Szczedrzyku">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Szczedrzyk_panorama.jpg/640px-Szczedrzyk_panorama.jpg" alt="Panorama miejscowości">
+  </div>
+</section>
+<section id="komentarze">
+  <h2>💬 Komentarze mieszkańców</h2>
+  <div id="lista-komentarzy"></div>
+
+  <div id="dodaj-komentarz">
+    <input type="text" id="autor" placeholder="Twoje imię">
+    <textarea id="tresc" placeholder="Napisz komentarz..."></textarea>
+    <button onclick="dodajKomentarz()">Dodaj komentarz</button>
+  </div>
+</section>
+
+<script>
+function dodajKomentarz() {
+  const autor = document.getElementById("autor").value.trim();
+  const tresc = document.getElementById("tresc").value.trim();
+  if (autor && tresc) {
+    const div = document.createElement("div");
+    div.className = "komentarz";
+    div.innerHTML = `<strong>${autor}</strong>: ${tresc}`;
+    document.getElementById("lista-komentarzy").appendChild(div);
+    document.getElementById("autor").value = "";
+    document.getElementById("tresc").value = "";
+  } else {
+    alert("Wpisz imię i komentarz!");
+  }
+}
+</script>
 
 <script>
   // 🔹 Ładowanie ogłoszeń przy uruchomieniu strony
