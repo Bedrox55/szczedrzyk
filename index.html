@@ -3,158 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Szczedrzyk – Oficjalna Strona Informacyjna</title>
+  <title>Szczedrzyk – Nasza Miejscowość</title>
   <link rel="stylesheet" href="styl.css">
 </head>
 <body>
-<nav class="menu">
-  <ul>
-    <li><a href="#historia">Historia</a></li>
-    <li><a href="#ogloszenia">Ogłoszenia</a></li>
-    <li><a href="#galeria">Galeria</a></li>
-    <li><a href="#komentarze">Komentarze</a></li>
-  </ul>
-</nav>
-
   <header>
-    <h1>🌿 Szczedrzyk – serce gminy Ozimek</h1>
+    <h1>🌤️ Szczedrzyk – Nasza Miejscowość</h1>
     <nav>
       <a href="#historia">Historia</a>
+      <a href="#aktualnosci">Aktualności</a>
       <a href="#ogloszenia">Ogłoszenia</a>
-      <a href="#komentarze">Komentarze</a>
+      <a href="#mapa">Mapa</a>
+      <a href="#kontakt">Kontakt</a>
+      <button id="tryb-nocny">🌙 Tryb nocny</button>
     </nav>
   </header>
 
   <main>
     <section id="historia">
-      <h2>Historia i charakterystyka Szczedrzyka</h2>
+      <h2>📜 Historia Szczedrzyka</h2>
       <p>
-        Szczedrzyk to malownicza miejscowość położona w gminie Ozimek, w województwie opolskim. 
-        Historia wsi sięga średniowiecza – pierwsze wzmianki o niej pochodzą z XIV wieku. 
-        Przez wieki Szczedrzyk był miejscem o dużym znaczeniu rolniczym i rzemieślniczym, 
-        a jego mieszkańcy od pokoleń dbają o lokalne tradycje i kulturę.
+        Szczedrzyk to urokliwa wieś położona w województwie opolskim, w gminie Ozimek.
+        Jej dzieje sięgają średniowiecza – pierwsze wzmianki o niej pochodzą z XIV wieku.
+        Przez wieki była miejscem o dużym znaczeniu rolniczym i rzemieślniczym, a jej mieszkańcy
+        od pokoleń dbają o lokalne tradycje i kulturę.
       </p>
       <p>
-        W miejscowości znajduje się kościół pw. św. Rocha, malownicze tereny spacerowe i liczne stawy, 
-        które przyciągają turystów oraz miłośników natury. Szczedrzyk słynie z gościnności i aktywności społecznej – 
-        działa tu wiele organizacji lokalnych, a mieszkańcy chętnie angażują się w wydarzenia kulturalne i sportowe.
+        W miejscowości znajduje się kościół pw. św. Rocha, malownicze stawy i tereny spacerowe.
+        Szczedrzyk słynie z gościnności, społecznej aktywności i licznych wydarzeń kulturalnych.
       </p>
     </section>
 
-   <section id="ogloszenia">
-  <h2>📢 Ogłoszenia</h2>
-  <ul id="lista-ogloszen"></ul>
+    <section id="aktualnosci">
+      <h2>🗞️ Aktualności</h2>
+      <ul>
+        <li><strong>9 października:</strong> Nowe ławki przy placu zabaw już gotowe!</li>
+        <li><strong>7 października:</strong> Zakończono remont świetlicy wiejskiej.</li>
+        <li><strong>5 października:</strong> Zbiórka darów dla schroniska w Ozimku.</li>
+      </ul>
+    </section>
 
-  <div id="dodaj-ogloszenie">
-    <h3>Dodaj własne ogłoszenie</h3>
-    <p>Twoje ogłoszenia zapisują się lokalnie w przeglądarce, więc nie znikną po odświeżeniu strony.</p>
-    <input type="text" id="noweOgloszenie" placeholder="Wpisz treść ogłoszenia...">
-    <button onclick="dodajOgloszenie()">Dodaj</button>
-    <button class="usun" onclick="wyczyscOgloszenia()">🗑 Wyczyść wszystkie</button>
-  </div>
-</section>
-<section id="galeria">
-  <h2>📸 Galeria Szczedrzyka</h2>
-  <div class="galeria">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Szczedrzyk_Church.jpg/640px-Szczedrzyk_Church.jpg" alt="Kościół w Szczedrzyku">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Szczedrzyk_stawy.jpg/640px-Szczedrzyk_stawy.jpg" alt="Stawy w Szczedrzyku">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Szczedrzyk_panorama.jpg/640px-Szczedrzyk_panorama.jpg" alt="Panorama miejscowości">
-  </div>
-</section>
-<section id="komentarze">
-  <h2>💬 Komentarze mieszkańców</h2>
-  <div id="lista-komentarzy"></div>
+    <section id="ogloszenia">
+      <h2>📢 Ogłoszenia</h2>
+      <ul id="lista-ogloszen">
+        <li><strong>15 października:</strong> Spotkanie sołeckie w świetlicy o 18:00.</li>
+        <li><strong>20 października:</strong> Jesienne sprzątanie wsi – zbiórka przy remizie o 9:00.</li>
+      </ul>
 
-  <div id="dodaj-komentarz">
-    <input type="text" id="autor" placeholder="Twoje imię">
-    <textarea id="tresc" placeholder="Napisz komentarz..."></textarea>
-    <button onclick="dodajKomentarz()">Dodaj komentarz</button>
-  </div>
-</section>
+      <div id="dodaj-ogloszenie">
+        <h3>Dodaj własne ogłoszenie</h3>
+        <input type="text" id="noweOgloszenie" placeholder="Wpisz treść ogłoszenia...">
+        <button onclick="dodajOgloszenie()">Dodaj</button>
+        <p><em>Ogłoszenie zapisze się tylko w Twojej przeglądarce (lokalnie)</em></p>
+      </div>
+      <div id="powiadomienie"></div>
+    </section>
 
-<script>
-function dodajKomentarz() {
-  const autor = document.getElementById("autor").value.trim();
-  const tresc = document.getElementById("tresc").value.trim();
-  if (autor && tresc) {
-    const div = document.createElement("div");
-    div.className = "komentarz";
-    div.innerHTML = `<strong>${autor}</strong>: ${tresc}`;
-    document.getElementById("lista-komentarzy").appendChild(div);
-    document.getElementById("autor").value = "";
-    document.getElementById("tresc").value = "";
-  } else {
-    alert("Wpisz imię i komentarz!");
-  }
-}
-</script>
+    <section id="mapa">
+      <h2>🗺️ Mapa Szczedrzyka</h2>
+      <iframe 
+        src="https://www.google.com/maps?q=Szczedrzyk&output=embed"
+        width="100%" height="400" style="border-radius: 15px; border: none;">
+      </iframe>
+    </section>
 
-<script>
-  // 🔹 Ładowanie ogłoszeń przy uruchomieniu strony
-  document.addEventListener("DOMContentLoaded", () => {
-    const ogloszenia = JSON.parse(localStorage.getItem("ogloszeniaSzczedrzyk")) || [];
-    ogloszenia.forEach(tekst => {
-      const li = document.createElement("li");
-      li.textContent = tekst;
-      document.getElementById("lista-ogloszen").appendChild(li);
-    });
-  });
-
-  // 🔹 Dodawanie ogłoszenia
-  function dodajOgloszenie() {
-    const tekst = document.getElementById("noweOgloszenie").value.trim();
-    if (tekst !== "") {
-      const li = document.createElement("li");
-      li.textContent = tekst;
-      document.getElementById("lista-ogloszen").appendChild(li);
-      
-      // Zapis w przeglądarce
-      const ogloszenia = JSON.parse(localStorage.getItem("ogloszeniaSzczedrzyk")) || [];
-      ogloszenia.push(tekst);
-      localStorage.setItem("ogloszeniaSzczedrzyk", JSON.stringify(ogloszenia));
-      
-      document.getElementById("noweOgloszenie").value = "";
-    }
-  }
-
-  // 🔹 Czyszczenie ogłoszeń
-  function wyczyscOgloszenia() {
-    if (confirm("Czy na pewno chcesz usunąć wszystkie ogłoszenia?")) {
-      localStorage.removeItem("ogloszeniaSzczedrzyk");
-      document.getElementById("lista-ogloszen").innerHTML = "";
-    }
-  }
-</script>
-
-
-    <section id="komentarze">
-      <h2>💬 Komentarze</h2>
-      <p>Komentarze obsługuje system <strong>Utterances</strong> – zaloguj się na GitHub, by dodać komentarz.</p>
-      <script src="https://utteranc.es/client.js"
-        repo="Bedrox55/szczedrzyk"
-        issue-term="pathname"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-      </script>
+    <section id="kontakt">
+      <h2>📬 Kontakt</h2>
+      <form id="formularz">
+        <input type="text" placeholder="Imię" required>
+        <input type="email" placeholder="Adres e-mail" required>
+        <textarea placeholder="Wiadomość..." required></textarea>
+        <button type="submit">Wyślij</button>
+      </form>
+      <p><em>Strona stworzona przez Samorząd Uczniowski – testowa wersja informacyjna</em></p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Szczedrzyk. Strona informacyjna stworzona przez Gustawa Ogórczaka.</p>
+    <p>© 2025 Szczedrzyk.pl | Wszystkie prawa zastrzeżone</p>
   </footer>
 
   <script>
-    function dodajOgloszenie() {
-      const tekst = document.getElementById("noweOgloszenie").value.trim();
-      if (tekst !== "") {
-        const li = document.createElement("li");
-        li.textContent = tekst;
-        document.getElementById("lista-ogloszen").appendChild(li);
-        document.getElementById("noweOgloszenie").value = "";
-      }
-    }
-  </script>
+    // 🌙 Tryb nocny
+    const btnTryb = document.getElementById('tryb-nocny');
+    btnTryb.addEventListener('click', () => {
+      document.body.classList.toggle('noc');
+      btnTryb.textContent = document.body.classList.contains('noc') ? '☀️ Tryb dzienny' : '🌙 Tryb nocny';
+    });
 
+    // 📢 Dodawanie ogłoszeń
+    function dodajOgloszenie() {
+      const input = document.getElementById('noweOgloszenie');
+      const lista = document.getElementById('lista-ogloszen');
+      const pow = document.getElementById('powiadomienie');
+
+      if (input.value.trim() === "") return;
+
+      const li = document.createElement('li');
+      li.textContent = input.value;
+      lista.appendChild(li);
+
+      pow.textContent = '✅ Nowe ogłoszenie zostało dodane!';
+      pow.style.display = 'block';
+
+      setTimeout(() => { pow.style.display = 'none'; }, 3000);
+      input.value = "";
+    }
+
+    // ✉️ Formularz kontaktowy – tylko komunikat
+    document.getElementById('formularz').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Dziękujemy za wiadomość! 📬');
+      e.target.reset();
+    });
+  </script>
 </body>
 </html>
+
+
