@@ -1,123 +1,252 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Szczedrzyk – Nasza Miejscowość</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Szczedrzyk.pl — Informacje lokalne</title>
   <link rel="stylesheet" href="styl.css">
+  <meta name="description" content="Szczedrzyk.pl — aktualności, historia, ogłoszenia i galeria miejscowości Szczedrzyk."/>
 </head>
 <body>
-  <header>
-    <h1>🌤️ Szczedrzyk – Nasza Miejscowość</h1>
-    <nav>
+  <div class="cloud-layer"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="logo.png" alt="Herb Szczedrzyka" class="logo">
+      <div class="brand-text">
+        <h1>Szczedrzyk.pl</h1>
+        <p class="tagline">Wiadomości, historia i życie naszej miejscowości</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="contrastBtn" title="Zmień kontrast">Kontrast</button>
+      <button id="fontDec" title="Zmniejsz tekst">A-</button>
+      <button id="fontInc" title="Zwiększ tekst">A+</button>
+      <button id="tryb-nocny">🌙</button>
+    </div>
+
+    <nav class="main-nav" aria-label="Główne menu">
       <a href="#historia">Historia</a>
       <a href="#aktualnosci">Aktualności</a>
       <a href="#ogloszenia">Ogłoszenia</a>
+      <a href="#galeria">Galeria</a>
       <a href="#mapa">Mapa</a>
       <a href="#kontakt">Kontakt</a>
-      <button id="tryb-nocny">🌙 Tryb nocny</button>
     </nav>
   </header>
 
   <main>
-    <section id="historia">
+    <!-- HISTORIA -->
+    <section id="historia" class="card">
       <h2>📜 Historia Szczedrzyka</h2>
       <p>
-        Szczedrzyk to urokliwa wieś położona w województwie opolskim, w gminie Ozimek.
-        Jej dzieje sięgają średniowiecza – pierwsze wzmianki o niej pochodzą z XIV wieku.
-        Przez wieki była miejscem o dużym znaczeniu rolniczym i rzemieślniczym, a jej mieszkańcy
-        od pokoleń dbają o lokalne tradycje i kulturę.
+        Szczedrzyk to malownicza miejscowość położona w województwie opolskim, w gminie Ozimek. Pierwsze wzmianki o Szczedrzyku sięgają średniowiecza — pojawia się w dokumentach z XIV wieku. 
       </p>
       <p>
-        W miejscowości znajduje się kościół pw. św. Rocha, malownicze stawy i tereny spacerowe.
-        Szczedrzyk słynie z gościnności, społecznej aktywności i licznych wydarzeń kulturalnych.
+        Przez wieki wieś rozwijała się jako osada rolno-leśna. W źródłach z XVI–XVII wieku znajdziemy informacje o bartnictwie i małym przeobrażeniu rolniczym. W XIX i XX wieku powstały tu ważne dla lokalnej społeczności instytucje — kościół parafialny oraz szkoła.
+      </p>
+      <p>
+        W XX wieku, w wyniku budowy Zbiornika Turawskiego, otoczenie wsi uległo zmianie — część terenów rolnych zamieniła się w tereny rekreacyjne, a wieś stała się atrakcyjna dla turystów i wypoczywających nad jeziorem.
+      </p>
+      <p>
+        Dziś Szczedrzyk to społeczność aktywna lokalnie — organizowane są festyny, sprzątania społeczne i spotkania mieszkańców. Na tej stronie znajdziesz aktualności, ogłoszenia i fotorelacje z wydarzeń.
       </p>
     </section>
 
-    <section id="aktualnosci">
+    <!-- AKTUALNOŚCI -->
+    <section id="aktualnosci" class="card">
       <h2>🗞️ Aktualności</h2>
-      <ul>
-        <li><strong>9 października:</strong> Nowe ławki przy placu zabaw już gotowe!</li>
-        <li><strong>7 października:</strong> Zakończono remont świetlicy wiejskiej.</li>
-        <li><strong>5 października:</strong> Zbiórka darów dla schroniska w Ozimku.</li>
+      <ul class="news-list" id="newsList">
+        <li><time>2025-10-09</time> — Nowe ławki na placu zabaw zostały zamontowane.</li>
+        <li><time>2025-10-07</time> — Zakończono remont świetlicy wiejskiej.</li>
+        <li><time>2025-10-05</time> — Zbiórka dla schroniska w Ozimku.</li>
       </ul>
-    </section>
-
-    <section id="ogloszenia">
-      <h2>📢 Ogłoszenia</h2>
-      <ul id="lista-ogloszen">
-        <li><strong>15 października:</strong> Spotkanie sołeckie w świetlicy o 18:00.</li>
-        <li><strong>20 października:</strong> Jesienne sprzątanie wsi – zbiórka przy remizie o 9:00.</li>
-      </ul>
-
-      <div id="dodaj-ogloszenie">
-        <h3>Dodaj własne ogłoszenie</h3>
-        <input type="text" id="noweOgloszenie" placeholder="Wpisz treść ogłoszenia...">
-        <button onclick="dodajOgloszenie()">Dodaj</button>
-        <p><em>Ogłoszenie zapisze się tylko w Twojej przeglądarce (lokalnie)</em></p>
+      <div class="news-add">
+        <input id="newsTitle" placeholder="Krótka treść aktualności..." />
+        <button id="addNewsBtn">Dodaj aktualność</button>
       </div>
-      <div id="powiadomienie"></div>
     </section>
 
-    <section id="mapa">
-      <h2>🗺️ Mapa Szczedrzyka</h2>
-      <iframe 
-        src="https://www.google.com/maps?q=Szczedrzyk&output=embed"
-        width="100%" height="400" style="border-radius: 15px; border: none;">
-      </iframe>
+    <!-- OGŁOSZENIA -->
+    <section id="ogloszenia" class="card">
+      <h2>📢 Ogłoszenia</h2>
+
+      <ul id="lista-ogloszen" class="ogloszenia-list"></ul>
+
+      <div class="ogloszenia-add">
+        <input id="noweOgloszenie" placeholder="Wpisz treść ogłoszenia..." />
+        <button id="dodajBtn">Dodaj</button>
+        <button id="clearBtn" class="danger">Wyczyść wszystkie</button>
+      </div>
+
+      <div id="powiadomienie" class="notification" aria-live="polite" role="status"></div>
     </section>
 
-    <section id="kontakt">
+    <!-- GALERIA -->
+    <section id="galeria" class="card">
+      <h2>📸 Galeria</h2>
+      <div class="galeria-grid">
+        <figure><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=60&auto=format&fit=crop" alt="Staw i drzewa"><figcaption>Staw i okolica</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1506917982574-5e839b7d1c6c?w=1200&q=60&auto=format&fit=crop" alt="Droga przez las"><figcaption>Droga przez las</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1508873696983-2dfd5898f8e8?w=1200&q=60&auto=format&fit=crop" alt="Kościół"><figcaption>Kościół (ilustracja)</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- MAPA -->
+    <section id="mapa" class="card">
+      <h2>🗺️ Mapa</h2>
+      <div class="map-wrap">
+        <iframe
+          title="Mapa Szczedrzyk"
+          src="https://www.google.com/maps?q=Szczedrzyk&output=embed"
+          loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="card">
       <h2>📬 Kontakt</h2>
-      <form id="formularz">
-        <input type="text" placeholder="Imię" required>
-        <input type="email" placeholder="Adres e-mail" required>
-        <textarea placeholder="Wiadomość..." required></textarea>
-        <button type="submit">Wyślij</button>
+
+      <form id="kontaktForm" class="contact-form">
+        <label>
+          Imię
+          <input type="text" name="name" required placeholder="Twoje imię">
+        </label>
+        <label>
+          E-mail
+          <input type="email" name="email" required placeholder="twój@adres.email">
+        </label>
+        <label>
+          Wiadomość
+          <textarea name="message" required placeholder="Treść wiadomości..."></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit">Wyślij wiadomość</button>
+        </div>
       </form>
-      <p><em>Strona stworzona przez Samorząd Uczniowski – testowa wersja informacyjna</em></p>
+
+      <div class="contact-info">
+        <p><strong>Adres redakcji:</strong> Szczedrzyk (gmina Ozimek)</p>
+        <p><strong>E-mail:</strong> kontakt@szczedrzyk.pl (przykładowy)</p>
+      </div>
+    </section>
+
+    <!-- KOMENTARZE (Utterances) -->
+    <section id="komentarze" class="card">
+      <h2>💬 Komentarze</h2>
+      <p>Do komentowania używany jest system Utterances (logowanie przez GitHub).</p>
+      <div id="utterances-thread">
+        <script src="https://utteranc.es/client.js"
+          repo="Bedrox55/szczedrzyk"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Szczedrzyk.pl | Wszystkie prawa zastrzeżone</p>
+  <footer class="site-footer">
+    <p>© 2025 Szczedrzyk.pl | Strona stworzona przez Gustawa Ogórczaka przy pomocy ChatGPT</p>
   </footer>
 
+  <!-- SCRIPTS -->
   <script>
-    // 🌙 Tryb nocny
-    const btnTryb = document.getElementById('tryb-nocny');
-    btnTryb.addEventListener('click', () => {
+    // --- Tryb nocny ///
+    const trybBtn = document.getElementById('tryb-nocny');
+    trybBtn.addEventListener('click', () => {
       document.body.classList.toggle('noc');
-      btnTryb.textContent = document.body.classList.contains('noc') ? '☀️ Tryb dzienny' : '🌙 Tryb nocny';
+      trybBtn.textContent = document.body.classList.contains('noc') ? '☀️' : '🌙';
+      localStorage.setItem('trybNocny', document.body.classList.contains('noc'));
     });
-
-    // 📢 Dodawanie ogłoszeń
-    function dodajOgloszenie() {
-      const input = document.getElementById('noweOgloszenie');
-      const lista = document.getElementById('lista-ogloszen');
-      const pow = document.getElementById('powiadomienie');
-
-      if (input.value.trim() === "") return;
-
-      const li = document.createElement('li');
-      li.textContent = input.value;
-      lista.appendChild(li);
-
-      pow.textContent = '✅ Nowe ogłoszenie zostało dodane!';
-      pow.style.display = 'block';
-
-      setTimeout(() => { pow.style.display = 'none'; }, 3000);
-      input.value = "";
+    // restore
+    if (localStorage.getItem('trybNocny') === 'true') {
+      document.body.classList.add('noc');
+      trybBtn.textContent = '☀️';
     }
 
-    // ✉️ Formularz kontaktowy – tylko komunikat
-    document.getElementById('formularz').addEventListener('submit', e => {
+    // --- Kontrast i rozmiar czcionki ///
+    const contrastBtn = document.getElementById('contrastBtn');
+    const fontInc = document.getElementById('fontInc');
+    const fontDec = document.getElementById('fontDec');
+    contrastBtn.addEventListener('click', () => {
+      document.body.classList.toggle('high-contrast');
+      localStorage.setItem('highContrast', document.body.classList.contains('high-contrast'));
+    });
+    if (localStorage.getItem('highContrast') === 'true') document.body.classList.add('high-contrast');
+
+    const applyFontSize = (v) => { document.documentElement.style.fontSize = v + 'px'; localStorage.setItem('fontSize', v); };
+    fontInc.addEventListener('click', () => applyFontSize((+localStorage.getItem('fontSize') || 16) + 1));
+    fontDec.addEventListener('click', () => applyFontSize((+localStorage.getItem('fontSize') || 16) - 1));
+    if (localStorage.getItem('fontSize')) document.documentElement.style.fontSize = localStorage.getItem('fontSize') + 'px';
+
+    // --- OGŁOSZENIA (localStorage) ///
+    const listaEl = document.getElementById('lista-ogloszen');
+    const stored = JSON.parse(localStorage.getItem('ogloszeniaSzczedrzyk') || '[]');
+    stored.forEach(t => {
+      const li = document.createElement('li'); li.textContent = t; listaEl.appendChild(li);
+    });
+
+    document.getElementById('dodajBtn').addEventListener('click', () => {
+      const input = document.getElementById('noweOgloszenie');
+      const txt = input.value.trim();
+      if (!txt) return;
+      const li = document.createElement('li'); li.textContent = txt; listaEl.appendChild(li);
+      stored.push(txt); localStorage.setItem('ogloszeniaSzczedrzyk', JSON.stringify(stored));
+      showNotif('✅ Nowe ogłoszenie dodane');
+      input.value = '';
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      if (!confirm('Czy na pewno chcesz usunąć wszystkie ogłoszenia?')) return;
+      localStorage.removeItem('ogloszeniaSzczedrzyk');
+      listaEl.innerHTML = ''; showNotif('🗑 Ogłoszenia usunięte');
+    });
+
+    function showNotif(txt) {
+      const p = document.getElementById('powiadomienie');
+      p.textContent = txt; p.style.display = 'block';
+      setTimeout(()=> p.style.display = 'none', 3000);
+      // spróbuj powiadomienia systemowego (opcjonalnie)
+      if ("Notification" in window && Notification.permission === "granted") {
+        new Notification(txt);
+      } else if ("Notification" in window && Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => { if (permission === "granted") new Notification(txt); });
+      }
+    }
+
+    // --- DODAWANIE AKTUALNOŚCI (lokalnie) ///
+    document.getElementById('addNewsBtn').addEventListener('click', () => {
+      const val = document.getElementById('newsTitle').value.trim();
+      if (!val) return alert('Wpisz treść aktualności');
+      const ul = document.getElementById('newsList');
+      const li = document.createElement('li');
+      const now = new Date().toISOString().slice(0,10);
+      li.innerHTML = '<time>'+now+'</time> — ' + val;
+      ul.prepend(li);
+      document.getElementById('newsTitle').value = '';
+    });
+
+    // --- FORMULARZ KONTAKTOWY (tylko front-end) ///
+    document.getElementById('kontaktForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Dziękujemy za wiadomość! 📬');
+      alert('Dziękujemy! Twoja wiadomość została przyjęta (przykładowa funkcja).');
       e.target.reset();
     });
+
+    // --- ATTACH UTTERANCES fallback (jeśli client.js nie wczyta się) ///
+    // Utterances script jest w HTML; jeżeli chcesz zmienić temat na ciemny w trybie nocnym:
+    (function updateUtterancesTheme() {
+      const iframe = document.querySelector('iframe.utterances-frame');
+      if (!iframe) return;
+      iframe.onload = () => {
+        try {
+          iframe.contentWindow.postMessage({ type: 'set-theme', theme: document.body.classList.contains('noc') ? 'github-dark' : 'github-light' }, 'https://utteranc.es');
+        } catch(e){/* ignore */}
+      };
+    })();
   </script>
 </body>
 </html>
-
-
