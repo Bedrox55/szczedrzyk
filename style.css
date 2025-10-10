@@ -1,348 +1,124 @@
-/* ======== Ogólny wygląd strony ======== */
-body {
-  font-family: "Segoe UI", Roboto, sans-serif;
-  background: #f6f8fa;
-  color: #222;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
-body {
-  background: url('https://i.imgur.com/Z1y0gBG.jpg') no-repeat center top fixed;
-  background-size: cover;
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  color: #222;
-}
-section {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 900px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+/* ===== Ogólne ===== */
+:root{
+  --accent:#2e8b57;
+  --accent-dark:#1f6b43;
+  --bg:#f6fbff;
+  --card-bg: rgba(255,255,255,0.95);
+  --muted:#666;
 }
 
-/* ======== Nagłówek ======== */
-header {
-  background: linear-gradient(135deg, #2e8b57, #4caf50);
-  color: white;
-  padding: 20px 0;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+  background: linear-gradient(to bottom,#bfe6ff,#ffffff 60%);
+  color:#111;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-header h1 {
-  font-size: 2.4em;
-  margin: 0;
+/* ===== Chmury tła ===== */
+.cloud-layer{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background-image: url('https://i.imgur.com/Z1y0gBG.jpg');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  opacity:0.35;
+  animation: clouds 140s linear infinite;
 }
+@keyframes clouds{ from{background-position-x:0} to{background-position-x:-3000px} }
 
-/* ======== Sekcje ======== */
-section {
-  background: white;
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+/* ===== Nagłówek / topbar ===== */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:30;
+  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.7);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding:10px 18px;
 }
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:64px;height:64px;object-fit:contain;border-radius:6px;border:2px solid rgba(0,0,0,0.06)}
+.brand-text h1{margin:0;font-size:1.4rem;color:var(--accent-dark)}
+.brand-text .tagline{margin:0;font-size:0.85rem;color:var(--muted)}
 
-h2 {
-  color: #2e8b57;
-  border-bottom: 2px solid #4caf50;
-  padding-bottom: 8px;
-  margin-bottom: 20px;
+/* Controls (contrast, font size, tryb) */
+.controls{position:absolute; right:18px; top:12px; display:flex; gap:8px; align-items:center}
+.controls button{
+  background:var(--accent);
+  color:#fff;border:none;padding:6px 8px;border-radius:6px;cursor:pointer;font-weight:600;
 }
+.controls button:hover{opacity:0.9}
+.controls button[title]{font-size:0.85rem}
 
-/* ======== Ogłoszenia ======== */
-#lista-ogloszen li {
-  background: #f0fdf4;
-  border: 1px solid #cce8cc;
-  padding: 10px 15px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  transition: 0.3s;
+/* Menu */
+.main-nav{margin-top:10px;display:flex;gap:12px;flex-wrap:wrap; justify-content:center}
+.main-nav a{color:var(--accent-dark);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+.main-nav a:hover{background:rgba(46,139,87,0.08)}
+
+/* ===== Layout sekcji ===== */
+main{padding:22px 16px 60px}
+.card{
+  max-width:1100px;
+  margin:20px auto;
+  background:var(--card-bg);
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 6px 18px rgba(18,38,63,0.07);
 }
+h2{color:var(--accent-dark);margin-top:0}
 
-#lista-ogloszen li:hover {
-  background: #e6f6e6;
+/* NEWS / OGŁOSZENIA styles */
+.news-list, .ogloszenia-list{list-style:none;padding:0;margin:0}
+.news-list li, .ogloszenia-list li{
+  padding:10px 12px;margin-bottom:10px;border-radius:8px;background:#fbfffb;border:1px solid rgba(0,0,0,0.03);
 }
+.news-add, .ogloszenia-add{display:flex;gap:8px;margin-top:12px}
+.news-add input, .ogloszenia-add input{flex:1;padding:10px;border-radius:8px;border:1px solid #ccc}
+.news-add button, .ogloszenia-add button{padding:10px 14px;border-radius:8px;border:none;background:var(--accent);color:white;cursor:pointer}
+button.danger{background:#b02a2a}
+.notification{display:none;margin-top:12px;padding:10px;border-radius:8px}
 
-/* ======== Dodawanie ogłoszeń ======== */
-#dodaj-ogloszenie {
-  margin-top: 25px;
+/* GALERIA */
+.galeria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.galeria-grid img{width:100%;height:170px;object-fit:cover;border-radius:10px;box-shadow:0 6px 12px rgba(0,0,0,0.08);transition:transform .25s}
+.galeria-grid img:hover{transform:scale(1.02)}
+
+/* MAPA */
+.map-wrap iframe{width:100%;height:420px;border:0;border-radius:10px}
+
+/* FORM */
+.contact-form{display:grid;gap:10px}
+.contact-form input,.contact-form textarea{padding:10px;border-radius:8px;border:1px solid #ccc}
+.contact-form button{padding:10px 14px;border-radius:8px;border:none;background:var(--accent);color:#fff;cursor:pointer}
+.contact-info{margin-top:12px;color:var(--muted)}
+
+/* FOOTER */
+.site-footer{text-align:center;padding:18px;background:rgba(255,255,255,0.66);border-top:1px solid rgba(0,0,0,0.04);position:relative;z-index:10}
+
+/* TRYB NOCNY */
+body.noc{
+  background: linear-gradient(to bottom,#0b1220,#1b2a3a);
+  color:#e8eef4;
 }
+body.noc .card{background: rgba(15,20,28,0.85);box-shadow: 0 6px 20px rgba(0,0,0,0.6)}
+body.noc .main-nav a{color:#cfe8ff}
+body.noc .controls button{background:#3d6b55}
 
-#dodaj-ogloszenie input {
-  padding: 10px;
-  width: 70%;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+/* KONTRAST DLA DOSTĘPNOŚCI */
+body.high-contrast{filter:contrast(120%) saturate(110%)}
+body.high-contrast .main-nav a{font-weight:800}
+
+/* RESPONSYWNOŚĆ */
+@media (max-width:800px){
+  .controls{position:static;justify-content:center;margin-top:8px}
+  .brand-text h1{font-size:1.1rem}
+  .logo{width:52px;height:52px}
+  .galeria-grid img{height:140px}
+  .map-wrap iframe{height:300px}
 }
-
-#dodaj-ogloszenie button {
-  background: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-left: 5px;
-  transition: background 0.3s;
-}
-
-#dodaj-ogloszenie button:hover {
-  background: #388e3c;
-}
-
-/* ======== Stopka ======== */
-footer {
-  background: #2e8b57;
-  color: white;
-  text-align: center;
-  padding: 15px 0;
-  margin-top: 40px;
-}
-
-/* ======== Responsywność ======== */
-@media (max-width: 700px) {
-  section {
-    margin: 20px;
-    padding: 20px;
-  }
-  
-  header h1 {
-    font-size: 1.8em;
-  }
-
-  #dodaj-ogloszenie input {
-    width: 60%;
-  }
-}
-/* ======== Pasek menu ======== */
-.menu {
-  background: #2e8b57;
-  padding: 10px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.menu ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-}
-
-.menu a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.menu a:hover {
-  text-decoration: underline;
-}
-
-/* ======== Galeria ======== */
-.galeria {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-}
-
-.galeria img {
-  width: 280px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
-}
-
-.galeria img:hover {
-  transform: scale(1.05);
-}
-
-/* ======== Komentarze ======== */
-#komentarze {
-  background: #f8fff8;
-}
-
-#dodaj-komentarz {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-#dodaj-komentarz input,
-#dodaj-komentarz textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-family: inherit;
-}
-
-#dodaj-komentarz button {
-  background: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-#dodaj-komentarz button:hover {
-  background: #388e3c;
-}
-
-.komentarz {
-  background: #eafbea;
-  border-left: 4px solid #4caf50;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 6px;
-}
-body {
-  font-family: "Segoe UI", sans-serif;
-  margin: 0;
-  color: #222;
-  background: linear-gradient(to bottom, #b9e6ff, #ffffff);
-  overflow-x: hidden;
-}
-
-/* 🌤️ Efekt chmur przesuwających się w tle */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 200%;
-  height: 100%;
-  background: url('https://i.imgur.com/Z1y0gBG.jpg') repeat-x;
-  background-size: cover;
-  animation: clouds 120s linear infinite;
-  z-index: -1;
-  opacity: 0.4;
-}
-
-@keyframes clouds {
-  from { background-position-x: 0; }
-  to { background-position-x: -2000px; }
-}
-
-/* 📜 Układ i styl sekcji */
-header {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-nav a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #0077cc;
-  font-weight: bold;
-}
-
-nav button {
-  margin-left: 15px;
-  padding: 5px 10px;
-  border: none;
-  background: #0077cc;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-section {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 900px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 🌙 Tryb nocny */
-body.noc {
-  background: linear-gradient(to bottom, #1a1a1a, #333);
-  color: #eee;
-}
-
-body.noc section {
-  background: rgba(40, 40, 40, 0.9);
-}
-
-body.noc nav a {
-  color: #66aaff;
-}
-
-/* 🗺️ Mapa */
-iframe {
-  border-radius: 15px;
-}
-
-/* 📢 Powiadomienia */
-#powiadomienie {
-  display: none;
-  background: #4caf50;
-  color: white;
-  text-align: center;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-/* 📬 Formularz kontaktowy */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-input, textarea, button {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-button {
-  background: #0077cc;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #005fa3;
-}
-
-footer {
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-  background: rgba(255, 255, 255, 0.9);
-}
-
-
-
