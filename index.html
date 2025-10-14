@@ -1,113 +1,83 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Szczedrzyk.pl</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      scroll-behavior: smooth;
-    }
-
     body {
-      background-color: #000;
-      color: #f7c600;
-      overflow-x: hidden;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
     }
 
     header {
-      background-color: #111;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 40px;
-      border-bottom: 2px solid #f7c600;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 25px 0;
     }
 
     header img {
-      height: 50px;
+      height: 70px;
+      vertical-align: middle;
+    }
+
+    nav {
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     nav a {
-      color: #f7c600;
+      color: #ffd700;
       text-decoration: none;
-      margin: 0 15px;
-      padding: 8px 16px;
-      border: 2px solid #f7c600;
+      padding: 12px 18px;
+      font-weight: bold;
+      border: 1px solid transparent;
       border-radius: 6px;
-      transition: background 0.2s, color 0.2s;
+      margin: 3px;
+      transition: background 0.3s, color 0.3s;
     }
 
     nav a:hover {
-      background: #f7c600;
-      color: #000;
+      background-color: #ffd700;
+      color: #111;
     }
 
     section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      padding: 40px;
       text-align: center;
-      padding: 60px 20px;
-      transition: opacity 0.5s ease;
     }
 
-    section img {
-      max-width: 90%;
+    .hero img {
+      width: 100%;
       height: auto;
-      border-radius: 12px;
-      margin: 20px 0;
-      border: 2px solid #f7c600;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
     footer {
+      background-color: #000;
+      color: #fff;
       text-align: center;
-      padding: 30px;
-      background-color: #111;
-      border-top: 2px solid #f7c600;
-      color: #f7c600;
+      padding: 20px;
+      font-size: 0.9rem;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
     }
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    p {
-      max-width: 800px;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .btn {
-      background-color: #f7c600;
-      color: #000;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .btn:hover {
-      background-color: #ffdb4d;
-      transform: scale(1.05);
+    iframe {
+      border: 3px solid #000;
+      border-radius: 10px;
+      width: 90%;
+      height: 400px;
     }
   </style>
 </head>
@@ -115,36 +85,54 @@
 
   <header>
     <img src="logo.png" alt="Logo Szczedrzyk">
-    <nav>
-      <a href="#glowna">Główna</a>
-      <a href="#historia">Historia</a>
-      <a href="#mapa">Mapa</a>
-    </nav>
+    <h1>szczedrzyk.pl</h1>
+    <p>Zapraszamy!</p>
   </header>
-<section id="aktualnosci"> <h2>Aktualności</h2> <p>Aktualności pojawią się wkrótce.</p> </section>
-  <section id="glowna">
-    <h1>Szczedrzyk.pl</h1>
-    <p>Zapraszamy na oficjalną stronę poświęconą naszej miejscowości — pełną historii, zdjęć i ciekawostek!</p>
-    <img src="turawskie.jpg" alt="Okolice Turawskie">
-    <a href="#historia"><button class="btn">Aktualności</button></a>
+
+  <nav>
+    <a href="#home">Strona główna</a>
+    <a href="#historia">Historia</a>
+    <a href="#mapa">Mapa i okolice</a>
+    <a href="#aktualnosci">Aktualności</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+
+  <section id="home" class="hero">
+    <img src="kosciol.jpg" alt="Kościół św. Mikołaja w Szczedrzyku">
   </section>
 
   <section id="historia">
     <h2>Historia Szczedrzyka</h2>
-    <p>Nasza miejscowość ma bogatą i ciekawą historię sięgającą wieków wstecz. Tutaj znajdziesz opowieści o dawnych mieszkańcach, wydarzeniach i tradycjach, które kształtowały to miejsce.</p>
-    <img src="kosciol.jpg" alt="Kościół w Szczedrzyku">
-    <a href="#mapa"><button class="btn">Zobacz mapę</button></a>
+    <p>Szczedrzyk to malownicza miejscowość położona w gminie Turawa, znana z bogatej historii i bliskości Jeziora Turawskiego.
+       Pierwsze wzmianki o wsi pochodzą z XIV wieku. Dziś jest to spokojne miejsce, w którym tradycja spotyka się z naturą.</p>
   </section>
 
   <section id="mapa">
     <h2>Mapa i okolice</h2>
-    <p>Odwiedź Szczedrzyk i jego okolice! Wkrótce dodamy interaktywną mapę i więcej informacji o trasach spacerowych i miejscach wartych odwiedzenia.</p>
-    <img src="turawskie.jpg" alt="Mapa okolic">
-    <a href="#glowna"><button class="btn">Powrót</button></a>
+    <p>Poznaj położenie Szczedrzyka oraz jego najbliższe okolice:</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2512.4901282320873!2d18.05567467724066!3d50.735334271638265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4710a62e7bba2e87%3A0xf5d77b41c90d6b70!2sSzczedrzyk!5e0!3m2!1spl!2spl!4v1697050123456!5m2!1spl!2spl"
+      allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <section id="aktualnosci">
+    <h2>Aktualności</h2>
+    <p>Aktualności pojawią się wkrótce.</p>
+  </section>
+
+  <section id="kontakt">
+    <h2>Kontakt</h2>
+    <p>Skontaktuj się z nami, aby dowiedzieć się więcej o Szczedrzyku.</p>
+    <p><strong>Email:</strong> kontakt@szczedrzyk.pl</p>
   </section>
 
   <footer>
-    <p>© 2025 Szczedrzyk.pl — strona w przygotowaniu</p>
+    Strona stworzona przez Gustawa Ogórczaka przy pomocy ChatGPT © 2025 <br>
+    <small>
+      Źródła zdjęć:
+      <a href="https://pl.wikipedia.org/wiki/Szczedrzyk" target="_blank">Wikipedia</a>,
+      <a href="https://szczedrzyk.com.pl/szczedrzyk/informacje/" target="_blank">Szczedrzyk.com.pl</a>,
+      <a href="https://homini.eu/jezioro-turawskie-niezwykly-zbiornik-malej-panwi/" target="_blank">Homini.eu</a>
+    </small>
   </footer>
 
 </body>
