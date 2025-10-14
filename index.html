@@ -98,3 +98,154 @@
   <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Szczedrzyk.pl</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #000;
+      color: #f7c600;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #111;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      border-bottom: 2px solid #f7c600;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    nav a {
+      color: #f7c600;
+      text-decoration: none;
+      margin: 0 15px;
+      padding: 8px 16px;
+      border: 2px solid #f7c600;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav a:hover {
+      background: #f7c600;
+      color: #000;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      transition: opacity 0.5s ease;
+    }
+
+    section img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 12px;
+      margin: 20px 0;
+      border: 2px solid #f7c600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #111;
+      border-top: 2px solid #f7c600;
+      color: #f7c600;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      max-width: 800px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background-color: #f7c600;
+      color: #000;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #ffdb4d;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Logo Szczedrzyk">
+    <nav>
+      <a href="#glowna">Główna</a>
+      <a href="#historia">Historia</a>
+      <a href="#mapa">Mapa</a>
+    </nav>
+  </header>
+
+  <section id="glowna">
+    <h1>Szczedrzyk.pl</h1>
+    <p>Zapraszamy na oficjalną stronę poświęconą naszej miejscowości — pełną historii, zdjęć i ciekawostek!</p>
+    <img src="turawskie.jpg" alt="Okolice Turawskie">
+    <a href="#historia"><button class="btn">Aktualności</button></a>
+  </section>
+
+  <section id="historia">
+    <h2>Historia Szczedrzyka</h2>
+    <p>Nasza miejscowość ma bogatą i ciekawą historię sięgającą wieków wstecz. Tutaj znajdziesz opowieści o dawnych mieszkańcach, wydarzeniach i tradycjach, które kształtowały to miejsce.</p>
+    <img src="kosciol.jpg" alt="Kościół w Szczedrzyku">
+    <a href="#mapa"><button class="btn">Zobacz mapę</button></a>
+  </section>
+
+  <section id="mapa">
+    <h2>Mapa i okolice</h2>
+    <p>Odwiedź Szczedrzyk i jego okolice! Wkrótce dodamy interaktywną mapę i więcej informacji o trasach spacerowych i miejscach wartych odwiedzenia.</p>
+    <img src="turawskie.jpg" alt="Mapa okolic">
+    <a href="#glowna"><button class="btn">Powrót</button></a>
+  </section>
+
+  <footer>
+    <p>© 2025 Szczedrzyk.pl — strona w przygotowaniu</p>
+  </footer>
+
+</body>
+</html>
